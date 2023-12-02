@@ -17,12 +17,22 @@ class Representative < ApplicationRecord
         end
       end
 
+      address = if official.address.present?
+        [official.address[0].line1, official.address[0].city, official.address[0].state, official.address[0].zip].compact.join(', ')
+      else
+        'Address unavailable'
+      end
+      
+      party = official.party || 'Party unavailable'
+      photo_url = official.photo_url || 'default_photo_url'
+
       existing_representative = Representative.find_by(name: official.name)
 
       if existing_representative
+        existing_representative.update(contact_address: address, political_party: party, photo_url: photo_url)
         reps.push(existing_representative)
       else
-        rep = Representative.create!({ name: official.name, ocdid: ocdid_temp, title: title_temp })
+        rep = Representative.create!({ name: official.name, ocdid: ocdid_temp, title: title_temp, contact_address: address, political_party: party, photo_url: photo_url})
         reps.push(rep)
       end
     end
