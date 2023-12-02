@@ -4,7 +4,7 @@
             .table-responsive-md.pt-5
                 %table.table.table-striped.table-hover#events
                     %caption Table of Representatives
-                    %thead.thead-darkh
+                    %thead.thead-dark
                         %tr
                             %th Name
                             %th Office
@@ -12,7 +12,7 @@
                     %tbody
                         - @representatives.each_with_index do |rep, _index|
                             %tr
-                                %td 
+                                %td
                                     = link_to rep.name, representative_path(rep)
                                 %td= rep.title
                                 %td
