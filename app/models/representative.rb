@@ -28,6 +28,7 @@ class Representative < ApplicationRecord
 
       existing_representative = Representative.find_by(name: official.name)
 
+      
       if existing_representative
         existing_representative.update(contact_address: address, political_party: party, photo_url: photo_url)
         reps.push(existing_representative)
