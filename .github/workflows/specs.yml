@@ -26,9 +26,7 @@ jobs:
           node-version: 13.14.0
       - uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      # - run: RAILS_ENV=test bundle exec rails db:migrate
-      # - run: RAILS_ENV=test bundle exec rails db:seed
+          bundler-cache: true
       - run: gem install bundler:2.1.4
       - run: npm install -g yarn@1.19.1
       - run: bundle install
