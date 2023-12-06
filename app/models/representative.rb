@@ -5,19 +5,9 @@ class Representative < ApplicationRecord
 
   def self.civic_api_to_representative_params(rep_info)
     reps = []
-
     rep_info.officials.each_with_index do |official, index|
       ocdid_temp, title_temp = find_office_info(rep_info.offices, index)
-
-      if official.address.present?
-        address = [official.address[0].line1,
-        official.address[0].city,
-        official.address[0].state,
-        official.address[0].zip].compact.join(', ')
-      else
-        address = 'Address unavailable'
-      end
-
+      address = build_address(official)
       party = official.party || 'Party unavailable'
       photo_url = official.photo_url || 'default_photo_url'
 
@@ -33,7 +23,6 @@ class Representative < ApplicationRecord
         reps.push(rep)
       end
     end
-
     reps
   end
 
