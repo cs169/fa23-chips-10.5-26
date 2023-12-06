@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class MapController < ApplicationController
-  # Render the map of the United States.
   def index
     @states = State.all
     @states_by_fips_code = @states.index_by(&:std_fips_code)
   end
 
-  # Render the map of the counties of a specific state.
   def state
     @state = State.find_by(symbol: params[:state_symbol].upcase)
     handle_state_not_found && return if @state.nil?
@@ -15,7 +13,6 @@ class MapController < ApplicationController
     @county_details = @state.counties.index_by(&:std_fips_code)
   end
 
-  # Render the map of a specific county.
   def county
     @state = State.find_by(symbol: params[:state_symbol].upcase)
     handle_state_not_found && return if @state.nil?
