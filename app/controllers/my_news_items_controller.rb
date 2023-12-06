@@ -56,4 +56,14 @@ class MyNewsItemsController < SessionController
   def news_item_params
     params.require(:news_item).permit(:news, :title, :description, :link, :representative_id)
   end
+
+  # def select_representative_and_issue
+      # to show first page
+  # end
+
+  def display_top_articles
+    # show second page: top 5 articles from News API
+    # use News API to get article data and give to views
+    
+  end
 end
