@@ -1,13 +1,21 @@
-# app/views/my_news_items/display_top_articles.html.haml
 .container
   %h1 Top Articles
+  %p
+    Representative: #{@representative}
+    Issue: #{@issue}
+  %p
+    Select an article:
   %ul
     - @top_articles.each do |article|
       %li
         = radio_button_tag 'selected_article', article.id
+        %strong Title:
         = article.title
         %br/
+        %strong Link:
         %small= article.url
+        %br/
+        %strong Description:
         %p= article.description
 
   = submit_tag 'Select Article', class: 'btn btn-primary'

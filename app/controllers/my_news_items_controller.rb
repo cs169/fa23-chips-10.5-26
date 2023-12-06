@@ -64,6 +64,13 @@ class MyNewsItemsController < SessionController
   def display_top_articles
     # show second page: top 5 articles from News API
     # use News API to get article data and give to views
+    api = NewAPI.new("AIzaSyDIjv9r13ThBwuhQhsCfwdirCKdrWIQKec")
     
+    # representative: representative, issue: issue, pageSize: 5 
+    query_string = "#{params[:representative]} #{params[:issue]}"
+    query_string += " pagesize:5"
+    encoded_query = URI.encode(query_string)
+    
+    @top_articles = api.get_top_articles(query: { apiKey: @api_key, q: encoded_query })
   end
 end
