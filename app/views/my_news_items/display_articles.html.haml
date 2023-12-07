@@ -1,8 +1,9 @@
 .container
   %h1 Top Articles
   %p
-    Representative: #{@representative}
-    Issue: #{@issue}
+    Representative: #{@representative.name}
+  %p
+    Issue: #{@selected_issue}
   
   = form_with url: "/representatives/#{@selected_representative.id}/my_news_item/new", method: :post do |f|
     %p
