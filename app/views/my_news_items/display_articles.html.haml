@@ -4,7 +4,7 @@
     Representative: #{@representative}
     Issue: #{@issue}
   
-  = form_with url: '/representatives/#{@representative.id}/representatives/#{@representative.id}/my_news_item/new', method: :post do |f|
+  = form_with url: "/representatives/#{@selected_representative.id}/my_news_item/new", method: :post do |f|
     %p
       Select an article:
     %ul
@@ -13,13 +13,16 @@
           = f.radio_button :selected_article, index
           %label{ for: "selected_article_#{index}" }
             %strong Title:
-            = article.title
+            = article['title']
             %br/
             %strong Link:
-            %small= article.url
+            %small= article['url']
             %br/
             %strong Description:
-            %p= article.description
+            %p= article['description']
+            = hidden_field_tag "articles[#{index}][title]", article['title']
+            = hidden_field_tag "articles[#{index}][description]", article['description']
+            = hidden_field_tag "articles[#{index}][url]", article['url']
 
     %p Rating:
     %ul

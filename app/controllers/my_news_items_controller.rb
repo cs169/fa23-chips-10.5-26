@@ -68,6 +68,8 @@ class MyNewsItemsController < SessionController
       mock_articles if Rails.env.test?
   
       if @articles.present?
+        p 'zzzzzzz'
+        p @articles
         render :display_articles
         return
       else
