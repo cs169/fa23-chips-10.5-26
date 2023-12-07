@@ -6,5 +6,6 @@ FactoryBot.define do
     link { 'link' }
     description { 'description' }
     representative { association :representative }
+    issue { 'Free Speech' }
   end
 end
