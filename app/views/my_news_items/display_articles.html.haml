@@ -1,0 +1,39 @@
+.container
+  %h1 Top Articles
+  %p
+    Representative: #{@representative}
+    Issue: #{@issue}
+  
+  = form_with url: '/representatives/#{@representative.id}/representatives/#{@representative.id}/my_news_item/new', method: :post do |f|
+    %p
+      Select an article:
+    %ul
+      - @articles.each_with_index do |article, index|
+        %li
+          = f.radio_button :selected_article, index
+          %label{ for: "selected_article_#{index}" }
+            %strong Title:
+            = article.title
+            %br/
+            %strong Link:
+            %small= article.url
+            %br/
+            %strong Description:
+            %p= article.description
+
+    %p Rating:
+    %ul
+      - (1..5).each do |rating|
+        %li
+          = f.radio_button :article_rating, rating
+          = rating
+
+    .actions
+      = f.submit 'Save', class: 'btn btn-primary'
+
+  .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+    .clearfix.mt-3
+      .float-right
+        = link_to representative_news_items_path(@representative), class: 'btn btn-info' do
+          View news articles
+          %i.fas.fa-arrow-right
