@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe NewsItemsController, type: :controller do
   let(:representative) { create(:representative) }
-  let(:news_item) { create(:news_item, representative: representative, issue: 'Free Speech') }
+  let(:news_item) { create(:news_item, representative: representative) }
 
   describe 'GET #index' do
     before { get :index, params: { representative_id: representative.id } }
