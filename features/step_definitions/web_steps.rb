@@ -53,6 +53,14 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
+When ('I click on state {string}') do |state|
+  visit "/state/#{state}"
+end
+
+When ('I click on county {string}') do |string|
+  visit search_representatives_path(string)
+end
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
