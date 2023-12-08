@@ -42,6 +42,7 @@ class MyNewsItemsController < SessionController
   def set_representative
     @representative = Representative.find(
       params[:representative_id]
+      p 'aaaaa'
     )
   end
 
