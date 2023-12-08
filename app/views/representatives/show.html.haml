@@ -1,14 +1,4 @@
 .container
-<<<<<<< HEAD
-  %h1= @representative.name
-  %p Office: #{@representative.title}
-  %p Contact Address: #{@representative.contact_address}
-  %p Political Party: #{@representative.political_party}
-  - if @representative.photo_url.present?
-    %img{ src: @representative.photo_url, alt: 'Representative Photo' }
-  - else
-    %p No photo available
-=======
     %h1= @representative.name
     %p OCDID: #{@representative.ocdid}
     %p Office: #{@representative.title}
@@ -18,4 +8,3 @@
         %img{ src: @representative.photo_url, alt: 'Representative Photo' }
     - else
         %p No photo available
->>>>>>> 03b3ae509307ddae5d3a471276db49c69409d2c6

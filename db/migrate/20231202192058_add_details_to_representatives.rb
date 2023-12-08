@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-class AddIssueToNewsArticles < ActiveRecord::Migration[5.2]
+class AddDetailsToRepresentatives < ActiveRecord::Migration[5.2]
   def change
-    add_column :news_items, :issue, :string
+    add_column :representatives, :contact_address, :string
+    add_column :representatives, :political_party, :string
+    add_column :representatives, :photo_url, :string
   end
 end
