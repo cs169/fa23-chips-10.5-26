@@ -3,19 +3,37 @@
   %p
     Representative: #{@representative}
     Issue: #{@issue}
-  %p
-    Select an article:
-  %ul
-    - @top_articles.each do |article|
-      %li
-        = radio_button_tag 'selected_article', article.id
-        %strong Title:
-        = article.title
-        %br/
-        %strong Link:
-        %small= article.url
-        %br/
-        %strong Description:
-        %p= article.description
+  
+  = form_with url: save_article_path, method: :post do |f|
+    %p
+      Select an article:
+    %ul
+      - @top_articles.each do |article|
+        %li
+          = f.radio_button :selected_article, article.id
+          %label{ for: "selected_article_#{article.id}" }
+            %strong Title:
+            = article.title
+            %br/
+            %strong Link:
+            %small= article.url
+            %br/
+            %strong Description:
+            %p= article.description
 
-  = submit_tag 'Select Article', class: 'btn btn-primary'
+    %p Rating:
+    %ul
+      - (1..5).each do |rating|
+        %li
+          = f.radio_button :article_rating, rating
+          = rating
+
+    .actions
+      = f.submit 'Save', class: 'btn btn-primary'
+
+  .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+    .clearfix.mt-3
+      .float-right
+        = link_to representative_news_items_path(@representative), class: 'btn btn-info' do
+          View news articles
+          %i.fas.fa-arrow-right
