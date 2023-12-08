@@ -1,7 +1,8 @@
 .container
     %h1 Top Articles
     %p
-        Representative: #{@representative.name}
+        Representative: 
+        = link_to @representative.name, representative_path(@representative)
     %p
         Issue: #{@selected_issue}
 
@@ -17,7 +18,7 @@
                         = article['title']
                         %br/
                         %strong Link:
-                        %small= article['url']
+                        = link_to article['url'], article['url'], target: '_blank', rel: 'noopener'
                         %br/
                         %strong Description:
                         %p= article['description']
