@@ -9,4 +9,3 @@ class RepresentativesController < ApplicationController
     @representative = Representative.find(params[:id])
   end
 end
-

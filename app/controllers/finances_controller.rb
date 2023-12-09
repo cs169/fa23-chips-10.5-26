@@ -10,7 +10,7 @@ class FinancesController < ApplicationController
 
     conn = Faraday.new do |faraday|
       faraday.url_prefix = url
-      #faraday.headers['X-API-Key'] = '9lcjslvwVjbqtX0KcQQ3W9rFm316caQQ2T89n4xA'
+      # faraday.headers['X-API-Key'] = '9lcjslvwVjbqtX0KcQQ3W9rFm316caQQ2T89n4xA'
       faraday.headers['X-API-Key'] = Rails.application.credentials[:PROPUBLICA_API_KEY]
       faraday.adapter Faraday.default_adapter
     end
@@ -20,7 +20,7 @@ class FinancesController < ApplicationController
     if response.success?
       top20 = JSON.parse(response.body)
       @candidates = Finance.get_candidates(top20)
-      #Rails.logger.debug @candidates
+      # Rails.logger.debug @candidates
     end
     render 'finances/show'
   end

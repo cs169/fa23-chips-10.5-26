@@ -5,13 +5,12 @@ class MyNewsItemsController < SessionController
   before_action :set_representatives_list
   before_action :set_issues_list
   before_action :set_news_item, only: %i[edit update destroy]
-  
+
   def new
     @news_item = NewsItem.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @news_item = NewsItem.new(news_item_params)
@@ -50,7 +49,8 @@ class MyNewsItemsController < SessionController
 
   def handle_save(action)
     if @news_item.update(news_item_params)
-      redirect_to representative_news_item_path(@representative, @news_item), notice: "News item was successfully #{action}."
+      redirect_to representative_news_item_path(@representative, @news_item),
+                  notice: "News item was successfully #{action}."
     else
       render :edit, error: "An error occurred when #{action == 'created' ? 'creating' : 'updating'} the news item."
     end
