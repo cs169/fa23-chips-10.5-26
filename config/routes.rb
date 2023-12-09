@@ -40,10 +40,7 @@ Rails.application.routes.draw do
         match '/representatives/:representative_id/my_news_item/:id', to:  'my_news_items#destroy',
                                                                       via: [:delete]
     end
-
-    get 'my_news_item/select_representative_issue', to: 'my_news_items#select_representative_issue', as: :select_representative_issue_my_news_item
-    get 'my_news_item/display_articles', to: 'my_news_items#display_articles', as: :display_articles_my_news_item
-    post 'my_news_item/search_articles', to: 'my_news_items#search_articles', as: :search_articles_my_news_item
-
     get '/search/(:address)' => 'search#search', :as => 'search_representatives'
+    get '/finances' => 'finances#search'
+    get '/finances/search' => 'finances#search_finances', as: 'search_finances'
 end

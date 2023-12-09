@@ -1,0 +1,46 @@
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  h1, p, select, input {
+    margin-bottom: 10px;
+  }
+</style>
+
+<form action="<%= search_finances_path %>" method="get">
+  <h1>Campaign Finances</h1>
+
+  <p>Cycle</p>
+  <select name="cycle" id="cycle">
+    <option value="2010">2010</option>
+    <option value="2012">2012</option>
+    <option value="2014">2014</option>
+    <option value="2016">2016</option>
+    <option value="2018">2018</option>
+    <option value="2020">2020</option>
+  </select>
+
+  <p>Category</p>
+  <select name="category" id="category">
+    <option value="candidate-loan">Candidate Loan</option>
+    <option value="contribution-total">Contribution Total</option>
+    <option value="debts-owed">Debts Owed</option>
+    <option value="disbursements-total">Disbursements Total</option>
+    <option value="end-cash">End Cash</option>
+    <option value="individual-total">Individual Total</option>
+    <option value="pac-total">PAC Total</option>
+    <option value="receipts-total">Receipts Total</option>
+    <option value="refund-total">Refund Total</option>
+  </select>
+
+  <%= submit_tag 'Search' %>
+</form>

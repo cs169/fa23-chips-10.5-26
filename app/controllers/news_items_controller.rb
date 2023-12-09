@@ -16,7 +16,6 @@ class NewsItemsController < ApplicationController
     @representative = Representative.find(
       params[:representative_id]
     )
-    @representative_id = params[:representative_id]
   end
 
   def set_news_item
