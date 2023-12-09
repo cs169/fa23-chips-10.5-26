@@ -10,7 +10,6 @@ class FinancesController < ApplicationController
 
     conn = Faraday.new do |faraday|
       faraday.url_prefix = url
-      # faraday.headers['X-API-Key'] = '9lcjslvwVjbqtX0KcQQ3W9rFm316caQQ2T89n4xA'
       faraday.headers['X-API-Key'] = Rails.application.credentials[:PROPUBLICA_API_KEY]
       faraday.adapter Faraday.default_adapter
     end
